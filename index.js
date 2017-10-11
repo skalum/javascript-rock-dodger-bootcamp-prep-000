@@ -36,18 +36,10 @@ function checkCollision(rock) {
     // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
     const rockRightEdge = rockLeftEdge + 20;
 
-<<<<<<< HEAD
     if ((rockLeftEdge <= dodgerLeftEdge && rockRightEdge >= dodgerLeftEdge) ||
         (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) ||
         (rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge)) {
           return true;
-=======
-    if ((rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) ||
-        (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) ||
-        (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge)) {
-          return true;
-        }
->>>>>>> cdbe4547f42bc414bc6027a630874f197264f420
     }
   }
 
@@ -79,7 +71,7 @@ function createRock(x) {
     // implement me!
     // (use the comments below to guide you!)
 
-    rock.style.top = `${top -= 2}px`;
+    rock.style.top = `${top += 2}px`;
 
     /**
      * If a rock collides with the DODGER,
@@ -91,7 +83,7 @@ function createRock(x) {
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-     else if (top > 0) window.requestAnimationFrame(moveRock)
+     else if (top < GAME_HEIGHT) window.requestAnimationFrame(moveRock)
 
     /**
      * But if the rock *has* reached the bottom of the GAME,
